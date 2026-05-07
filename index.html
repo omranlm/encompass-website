@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,24 +20,25 @@
           <line x1="30" y1="51" x2="30" y2="57" stroke="#1E3A5F" stroke-width="2"/>
           <line x1="3" y1="30" x2="9" y2="30" stroke="#1E3A5F" stroke-width="2"/>
           <line x1="51" y1="30" x2="57" y2="30" stroke="#1E3A5F" stroke-width="2"/>
-          <!-- N needle (navy) -->
           <polygon points="30,8 26.5,30 33.5,30" fill="#1E3A5F"/>
-          <!-- S needle (gold) -->
           <polygon points="30,52 26.5,30 33.5,30" fill="#C9A227"/>
-          <!-- E needle -->
           <polygon points="52,30 30,26.5 30,33.5" fill="#1E3A5F" opacity="0.45"/>
-          <!-- W needle -->
           <polygon points="8,30 30,26.5 30,33.5" fill="#C9A227" opacity="0.45"/>
           <circle cx="30" cy="30" r="3.5" fill="white" stroke="#1E3A5F" stroke-width="1.5"/>
         </svg>
         <div class="nav-logo-text">EnCompass <span>e.V.</span></div>
       </a>
       <ul class="nav-links" id="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#work">What We Do</a></li>
-        <li><a href="#membership">Membership</a></li>
-        <li><a href="#contact" class="nav-cta">Contact</a></li>
+        <li><a href="#about" data-i18n="nav.about">About</a></li>
+        <li><a href="#work" data-i18n="nav.work">What We Do</a></li>
+        <li><a href="#membership" data-i18n="nav.membership">Membership</a></li>
+        <li><a href="#contact" class="nav-cta" data-i18n="nav.contact">Contact</a></li>
       </ul>
+      <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="de">DE</button>
+        <button class="lang-btn" data-lang="ar">AR</button>
+      </div>
       <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -47,46 +48,37 @@
   <!-- HERO -->
   <section class="hero" id="home">
     <div class="hero-bg" aria-hidden="true">
-      <!-- Large decorative compass watermark -->
       <svg width="560" height="560" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
         <circle cx="60" cy="60" r="56" fill="none" stroke="white" stroke-width="1"/>
         <circle cx="60" cy="60" r="46" fill="none" stroke="white" stroke-width="0.5"/>
         <circle cx="60" cy="60" r="32" fill="none" stroke="white" stroke-width="0.4"/>
-        <!-- Cardinal ticks -->
         <line x1="60" y1="4" x2="60" y2="13" stroke="white" stroke-width="1.5"/>
         <line x1="60" y1="107" x2="60" y2="116" stroke="white" stroke-width="1.5"/>
         <line x1="4" y1="60" x2="13" y2="60" stroke="white" stroke-width="1.5"/>
         <line x1="107" y1="60" x2="116" y2="60" stroke="white" stroke-width="1.5"/>
-        <!-- Ordinal ticks -->
         <line x1="20.5" y1="20.5" x2="26.5" y2="26.5" stroke="white" stroke-width="0.75"/>
         <line x1="99.5" y1="20.5" x2="93.5" y2="26.5" stroke="white" stroke-width="0.75"/>
         <line x1="20.5" y1="99.5" x2="26.5" y2="93.5" stroke="white" stroke-width="0.75"/>
         <line x1="99.5" y1="99.5" x2="93.5" y2="93.5" stroke="white" stroke-width="0.75"/>
-        <!-- N needle -->
         <polygon points="60,8 55.5,60 64.5,60" fill="white"/>
-        <!-- S needle -->
         <polygon points="60,112 55.5,60 64.5,60" fill="white" opacity="0.35"/>
-        <!-- E needle -->
         <polygon points="112,60 60,55.5 60,64.5" fill="white" opacity="0.55"/>
-        <!-- W needle -->
         <polygon points="8,60 60,55.5 60,64.5" fill="white" opacity="0.25"/>
-        <!-- Direction labels -->
         <text x="57" y="21" fill="white" font-size="7" font-family="system-ui" font-weight="700">N</text>
         <text x="57" y="105" fill="white" font-size="7" font-family="system-ui" font-weight="700">S</text>
         <text x="101" y="63" fill="white" font-size="7" font-family="system-ui" font-weight="700">E</text>
         <text x="10" y="63" fill="white" font-size="7" font-family="system-ui" font-weight="700">W</text>
-        <!-- Center ring -->
         <circle cx="60" cy="60" r="5.5" fill="none" stroke="white" stroke-width="1.25"/>
       </svg>
     </div>
     <div class="container">
       <div class="hero-content">
-        <span class="section-label">Berlin · Est. 2024</span>
-        <h1>Advancing <em>Liberal Values</em> &amp; Personal Freedoms</h1>
-        <p class="hero-sub">A Berlin-based non-profit dedicated to spreading the principles of liberalism, open society, and individual freedom — locally and internationally.</p>
+        <span class="section-label" data-i18n="hero.label">Berlin · Est. 2024</span>
+        <h1 data-i18n-html="hero.title">Advancing <em>Liberal Values</em> &amp; Personal Freedoms</h1>
+        <p class="hero-sub" data-i18n="hero.sub">A Berlin-based non-profit dedicated to spreading the principles of liberalism, open society, and individual freedom — locally and internationally.</p>
         <div class="hero-buttons">
-          <a href="#about" class="btn btn-primary">Our Mission</a>
-          <a href="#membership" class="btn btn-outline">Join Us</a>
+          <a href="#about" class="btn btn-primary" data-i18n="hero.cta1">Our Mission</a>
+          <a href="#membership" class="btn btn-outline" data-i18n="hero.cta2">Join Us</a>
         </div>
       </div>
     </div>
@@ -97,30 +89,30 @@
     <div class="container">
       <div class="about-grid">
         <div class="about-text">
-          <span class="section-label">Who We Are</span>
-          <h2>A Voice for Freedom &amp; Open Society</h2>
-          <p>EnCompass e.V. is a registered non-profit association based in Berlin, Germany. We are committed to spreading the concepts and values of liberalism and personal freedoms — within our society and far beyond its borders.</p>
-          <p>We believe that open, free societies flourish when individuals are empowered through access to culture, knowledge, and free expression. Our work brings together artists, academics, journalists, and engaged citizens who share this conviction.</p>
+          <span class="section-label" data-i18n="about.label">Who We Are</span>
+          <h2 data-i18n="about.h2">A Voice for Freedom &amp; Open Society</h2>
+          <p data-i18n="about.p1">EnCompass e.V. is a registered non-profit association based in Berlin, Germany. We are committed to spreading the concepts and values of liberalism and personal freedoms — within our society and far beyond its borders.</p>
+          <p data-i18n="about.p2">We believe that open, free societies flourish when individuals are empowered through access to culture, knowledge, and free expression. Our work brings together artists, academics, journalists, and engaged citizens who share this conviction.</p>
           <div class="facts-strip">
             <div class="fact">
               <div class="fact-icon">🏛️</div>
               <div>
-                <strong>Based in Berlin</strong>
-                <span>Registered e.V. under German law</span>
+                <strong data-i18n="about.fact1.title">Based in Berlin</strong>
+                <span data-i18n="about.fact1.sub">Registered e.V. under German law</span>
               </div>
             </div>
             <div class="fact">
               <div class="fact-icon">🌍</div>
               <div>
-                <strong>International Reach</strong>
-                <span>Domestic &amp; global activities</span>
+                <strong data-i18n="about.fact2.title">International Reach</strong>
+                <span data-i18n="about.fact2.sub">Domestic &amp; global activities</span>
               </div>
             </div>
             <div class="fact">
               <div class="fact-icon">⚖️</div>
               <div>
-                <strong>Non-Profit</strong>
-                <span>Recognised under §52 AO</span>
+                <strong data-i18n="about.fact3.title">Non-Profit</strong>
+                <span data-i18n="about.fact3.sub">Recognised under §52 AO</span>
               </div>
             </div>
           </div>
@@ -131,28 +123,22 @@
             <circle cx="60" cy="60" r="44" fill="none" stroke="#C9A227" stroke-width="0.75" stroke-dasharray="3 4"/>
             <circle cx="60" cy="60" r="34" fill="none" stroke="#E5E7EB" stroke-width="0.5"/>
             <circle cx="60" cy="60" r="22" fill="none" stroke="#E5E7EB" stroke-width="0.4"/>
-            <!-- Ordinal lines -->
             <line x1="60" y1="60" x2="98.2" y2="21.8" stroke="#E5E7EB" stroke-width="0.5"/>
             <line x1="60" y1="60" x2="21.8" y2="21.8" stroke="#E5E7EB" stroke-width="0.5"/>
             <line x1="60" y1="60" x2="98.2" y2="98.2" stroke="#E5E7EB" stroke-width="0.5"/>
             <line x1="60" y1="60" x2="21.8" y2="98.2" stroke="#E5E7EB" stroke-width="0.5"/>
-            <!-- Cardinal ticks -->
             <line x1="60" y1="6" x2="60" y2="14" stroke="#1E3A5F" stroke-width="2"/>
             <line x1="60" y1="106" x2="60" y2="114" stroke="#C9A227" stroke-width="2"/>
             <line x1="6" y1="60" x2="14" y2="60" stroke="#1E3A5F" stroke-width="1.5" opacity="0.5"/>
             <line x1="106" y1="60" x2="114" y2="60" stroke="#1E3A5F" stroke-width="1.5" opacity="0.5"/>
-            <!-- N/S needle -->
             <polygon points="60,10 55.5,60 64.5,60" fill="#1E3A5F"/>
             <polygon points="60,110 55.5,60 64.5,60" fill="#C9A227"/>
-            <!-- E/W needle -->
             <polygon points="110,60 60,55.5 60,64.5" fill="#1E3A5F" opacity="0.4"/>
             <polygon points="10,60 60,55.5 60,64.5" fill="#C9A227" opacity="0.4"/>
-            <!-- Labels -->
             <text x="57" y="22" fill="#1E3A5F" font-size="7" font-family="system-ui" font-weight="700">N</text>
             <text x="57" y="104" fill="#C9A227" font-size="7" font-family="system-ui" font-weight="700">S</text>
             <text x="102" y="63" fill="#1E3A5F" font-size="7" font-family="system-ui" font-weight="700" opacity="0.6">E</text>
             <text x="9" y="63" fill="#1E3A5F" font-size="7" font-family="system-ui" font-weight="700" opacity="0.6">W</text>
-            <!-- Center -->
             <circle cx="60" cy="60" r="5" fill="white" stroke="#1E3A5F" stroke-width="1.5"/>
             <circle cx="60" cy="60" r="2" fill="#C9A227"/>
           </svg>
@@ -165,30 +151,30 @@
   <section class="work section" id="work">
     <div class="container">
       <div class="work-header">
-        <span class="section-label">What We Do</span>
-        <h2>Our Work</h2>
-        <p>We pursue our mission through four core areas of activity, each designed to strengthen open societies and amplify the voices that sustain them.</p>
+        <span class="section-label" data-i18n="work.label">What We Do</span>
+        <h2 data-i18n="work.h2">Our Work</h2>
+        <p data-i18n="work.intro">We pursue our mission through four core areas of activity, each designed to strengthen open societies and amplify the voices that sustain them.</p>
       </div>
       <div class="cards-grid">
         <div class="card">
           <div class="card-icon">🎨</div>
-          <h3>Art &amp; Culture</h3>
-          <p>We support artistic projects and cultural events that champion freedom of expression and bring liberal ideas to life through creative work.</p>
+          <h3 data-i18n="work.card1.title">Art &amp; Culture</h3>
+          <p data-i18n="work.card1.body">We support artistic projects and cultural events that champion freedom of expression and bring liberal ideas to life through creative work.</p>
         </div>
         <div class="card">
           <div class="card-icon">📡</div>
-          <h3>Media &amp; Content</h3>
-          <p>We produce and support content across print, digital, and broadcast formats to broaden public understanding of liberal values and open society.</p>
+          <h3 data-i18n="work.card2.title">Media &amp; Content</h3>
+          <p data-i18n="work.card2.body">We produce and support content across print, digital, and broadcast formats to broaden public understanding of liberal values and open society.</p>
         </div>
         <div class="card">
           <div class="card-icon">🎓</div>
-          <h3>Workshops &amp; Seminars</h3>
-          <p>We organize educational events — open to practitioners, academics, students, and the public — that foster critical thinking and civic engagement.</p>
+          <h3 data-i18n="work.card3.title">Workshops &amp; Seminars</h3>
+          <p data-i18n="work.card3.body">We organize educational events — open to practitioners, academics, students, and the public — that foster critical thinking and civic engagement.</p>
         </div>
         <div class="card">
           <div class="card-icon">✍️</div>
-          <h3>Authors &amp; Academics</h3>
-          <p>We support writers, researchers, and scholars whose work advances knowledge of free and open societies — providing platforms, funding, and networks.</p>
+          <h3 data-i18n="work.card4.title">Authors &amp; Academics</h3>
+          <p data-i18n="work.card4.body">We support writers, researchers, and scholars whose work advances knowledge of free and open societies — providing platforms, funding, and networks.</p>
         </div>
       </div>
     </div>
@@ -198,32 +184,32 @@
   <section class="membership section" id="membership">
     <div class="container">
       <div class="membership-header">
-        <span class="section-label">Get Involved</span>
-        <h2>Become a Member</h2>
-        <p>EnCompass e.V. welcomes individuals and organisations who share our commitment to liberal values and personal freedoms. We offer three types of membership.</p>
+        <span class="section-label" data-i18n="membership.label">Get Involved</span>
+        <h2 data-i18n="membership.h2">Become a Member</h2>
+        <p data-i18n="membership.intro">EnCompass e.V. welcomes individuals and organisations who share our commitment to liberal values and personal freedoms. We offer three types of membership.</p>
       </div>
       <div class="membership-grid">
         <div class="membership-card featured">
-          <div class="member-badge">Ordinary Member</div>
-          <h3>Active Member</h3>
-          <p>Support the mission through both regular financial contributions and active voluntary engagement in our programmes and activities.</p>
-          <p class="member-detail">✓ Full voting rights &nbsp;·&nbsp; ✓ Right to stand for election<br>Fee amount set by the General Assembly</p>
+          <div class="member-badge" data-i18n="membership.card1.badge">Ordinary Member</div>
+          <h3 data-i18n="membership.card1.h3">Active Member</h3>
+          <p data-i18n="membership.card1.body">Support the mission through both regular financial contributions and active voluntary engagement in our programmes and activities.</p>
+          <p class="member-detail" data-i18n-html="membership.card1.detail">✓ Full voting rights &nbsp;·&nbsp; ✓ Right to stand for election<br>Fee amount set by the General Assembly</p>
         </div>
         <div class="membership-card">
-          <div class="member-badge">Honorary Member</div>
-          <h3>Honorary Member</h3>
-          <p>Appointed by the General Assembly for exceptional contributions to the association or for expertise and influence that benefits our mission.</p>
-          <p class="member-detail">✓ Full voting rights &nbsp;·&nbsp; ✓ Right to stand for election<br>Nominated by the Board or Supervisory Council</p>
+          <div class="member-badge" data-i18n="membership.card2.badge">Honorary Member</div>
+          <h3 data-i18n="membership.card2.h3">Honorary Member</h3>
+          <p data-i18n="membership.card2.body">Appointed by the General Assembly for exceptional contributions to the association or for expertise and influence that benefits our mission.</p>
+          <p class="member-detail" data-i18n-html="membership.card2.detail">✓ Full voting rights &nbsp;·&nbsp; ✓ Right to stand for election<br>Nominated by the Board or Supervisory Council</p>
         </div>
         <div class="membership-card">
-          <div class="member-badge">Supporting Member</div>
-          <h3>Supporting Member</h3>
-          <p>Individuals, companies, or associations who support our mission through regular financial contributions. Open to legal entities.</p>
-          <p class="member-detail">No voting rights<br>Minimum fee set by the General Assembly</p>
+          <div class="member-badge" data-i18n="membership.card3.badge">Supporting Member</div>
+          <h3 data-i18n="membership.card3.h3">Supporting Member</h3>
+          <p data-i18n="membership.card3.body">Individuals, companies, or associations who support our mission through regular financial contributions. Open to legal entities.</p>
+          <p class="member-detail" data-i18n-html="membership.card3.detail">No voting rights<br>Minimum fee set by the General Assembly</p>
         </div>
       </div>
       <div class="membership-cta">
-        <a href="#contact" class="btn btn-primary">Apply for Membership</a>
+        <a href="#contact" class="btn btn-primary" data-i18n="membership.cta">Apply for Membership</a>
       </div>
     </div>
   </section>
@@ -232,55 +218,55 @@
   <section class="contact section" id="contact">
     <div class="container">
       <div class="contact-header">
-        <span class="section-label">Contact Us</span>
-        <h2>Get in Touch</h2>
-        <p>Whether you want to learn more, attend an event, collaborate, or become a member — we'd love to hear from you.</p>
+        <span class="section-label" data-i18n="contact.label">Contact Us</span>
+        <h2 data-i18n="contact.h2">Get in Touch</h2>
+        <p data-i18n="contact.intro">Whether you want to learn more, attend an event, collaborate, or become a member — we'd love to hear from you.</p>
       </div>
       <div class="contact-grid">
         <div class="contact-info">
-          <h3>Contact Information</h3>
+          <h3 data-i18n="contact.info.heading">Contact Information</h3>
           <div class="contact-item">
             <div class="contact-item-icon">📍</div>
             <div>
-              <strong>Address</strong>
-              <span>EnCompass e.V.<br>Berlin, Germany</span>
+              <strong data-i18n="contact.address.label">Address</strong>
+              <span data-i18n-html="contact.address.value">EnCompass e.V.<br>Berlin, Germany</span>
             </div>
           </div>
           <div class="contact-item">
             <div class="contact-item-icon">✉️</div>
             <div>
-              <strong>Email</strong>
+              <strong data-i18n="contact.email.label">Email</strong>
               <span>info@encompass.ngo</span>
             </div>
           </div>
           <div class="contact-item">
             <div class="contact-item-icon">⚖️</div>
             <div>
-              <strong>Legal Status</strong>
-              <span>Registered non-profit association (eingetragener Verein) under German law. Non-profit status under §52 Abgabenordnung.</span>
+              <strong data-i18n="contact.legal.label">Legal Status</strong>
+              <span data-i18n="contact.legal.value">Registered non-profit association (eingetragener Verein) under German law. Non-profit status under §52 Abgabenordnung.</span>
             </div>
           </div>
         </div>
         <form class="contact-form" onsubmit="handleSubmit(event)">
           <div class="form-row">
             <div class="form-group">
-              <label for="name">Full Name</label>
-              <input type="text" id="name" name="name" placeholder="Your name" autocomplete="name" required>
+              <label for="name" data-i18n="contact.form.name">Full Name</label>
+              <input type="text" id="name" name="name" data-i18n-placeholder="contact.form.namePlaceholder" placeholder="Your name" autocomplete="name" required>
             </div>
             <div class="form-group">
-              <label for="email">Email Address</label>
-              <input type="email" id="email" name="email" placeholder="your@email.com" autocomplete="email" required>
+              <label for="email" data-i18n="contact.form.email">Email Address</label>
+              <input type="email" id="email" name="email" data-i18n-placeholder="contact.form.emailPlaceholder" placeholder="your@email.com" autocomplete="email" required>
             </div>
           </div>
           <div class="form-group">
-            <label for="subject">Subject</label>
-            <input type="text" id="subject" name="subject" placeholder="How can we help?">
+            <label for="subject" data-i18n="contact.form.subject">Subject</label>
+            <input type="text" id="subject" name="subject" data-i18n-placeholder="contact.form.subjectPlaceholder" placeholder="How can we help?">
           </div>
           <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" placeholder="Tell us more..." required></textarea>
+            <label for="message" data-i18n="contact.form.message">Message</label>
+            <textarea id="message" name="message" data-i18n-placeholder="contact.form.messagePlaceholder" placeholder="Tell us more..." required></textarea>
           </div>
-          <button type="submit" class="btn btn-primary" style="align-self:flex-start">Send Message</button>
+          <button type="submit" class="btn btn-primary" id="submit-btn" style="align-self:flex-start" data-i18n="contact.form.submit">Send Message</button>
         </form>
       </div>
     </div>
@@ -302,54 +288,92 @@
             </svg>
             <div class="footer-logo-text">EnCompass <span>e.V.</span></div>
           </div>
-          <p class="footer-tagline">Advancing liberal values &amp; personal freedoms — in Germany and around the world.</p>
+          <p class="footer-tagline" data-i18n="footer.tagline">Advancing liberal values &amp; personal freedoms — in Germany and around the world.</p>
         </div>
         <div class="footer-links">
           <div class="footer-links-group">
-            <h4>Organisation</h4>
+            <h4 data-i18n="footer.org">Organisation</h4>
             <ul>
-              <li><a href="#about">About Us</a></li>
-              <li><a href="#work">Our Work</a></li>
-              <li><a href="#membership">Membership</a></li>
-              <li><a href="#contact">Contact</a></li>
+              <li><a href="#about" data-i18n="footer.nav.about">About Us</a></li>
+              <li><a href="#work" data-i18n="footer.nav.work">Our Work</a></li>
+              <li><a href="#membership" data-i18n="footer.nav.membership">Membership</a></li>
+              <li><a href="#contact" data-i18n="footer.nav.contact">Contact</a></li>
             </ul>
           </div>
           <div class="footer-links-group">
-            <h4>Membership</h4>
+            <h4 data-i18n="footer.membership">Membership</h4>
             <ul>
-              <li><a href="#membership">Ordinary Member</a></li>
-              <li><a href="#membership">Honorary Member</a></li>
-              <li><a href="#membership">Supporting Member</a></li>
+              <li><a href="#membership" data-i18n="footer.nav.ordinary">Ordinary Member</a></li>
+              <li><a href="#membership" data-i18n="footer.nav.honorary">Honorary Member</a></li>
+              <li><a href="#membership" data-i18n="footer.nav.supporting">Supporting Member</a></li>
             </ul>
           </div>
         </div>
       </div>
-      <div class="footer-bottom">
+      <div class="footer-bottom" data-i18n="footer.legal">
         EnCompass e.V. &nbsp;·&nbsp; Registered in Berlin &nbsp;·&nbsp; Non-profit under German law (§52 AO) &nbsp;·&nbsp; All rights reserved
       </div>
     </div>
   </footer>
 
+  <script src="translations.js"></script>
   <script>
-    const hamburger = document.getElementById('hamburger');
-    const navLinks = document.getElementById('nav-links');
+    let currentLang = 'en';
 
-    hamburger.addEventListener('click', () => {
-      const open = navLinks.classList.toggle('open');
-      hamburger.setAttribute('aria-expanded', open);
-    });
+    function applyLanguage(lang) {
+      const t = translations[lang];
+      if (!t) return;
+      currentLang = lang;
 
-    navLinks.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => {
-        navLinks.classList.remove('open');
-        hamburger.setAttribute('aria-expanded', 'false');
+      document.documentElement.lang = lang;
+      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+      document.title = t['page.title'] || document.title;
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const v = t[el.dataset.i18n];
+        if (v !== undefined) el.textContent = v;
+      });
+      document.querySelectorAll('[data-i18n-html]').forEach(el => {
+        const v = t[el.dataset.i18nHtml];
+        if (v !== undefined) el.innerHTML = v;
+      });
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const v = t[el.dataset.i18nPlaceholder];
+        if (v !== undefined) el.placeholder = v;
+      });
+
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+      localStorage.setItem('preferred-lang', lang);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const saved = localStorage.getItem('preferred-lang') || 'en';
+      applyLanguage(saved);
+
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => applyLanguage(btn.dataset.lang));
+      });
+
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('nav-links');
+      hamburger.addEventListener('click', () => {
+        const open = navLinks.classList.toggle('open');
+        hamburger.setAttribute('aria-expanded', open);
+      });
+      navLinks.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+          navLinks.classList.remove('open');
+          hamburger.setAttribute('aria-expanded', 'false');
+        });
       });
     });
 
     function handleSubmit(e) {
       e.preventDefault();
-      const btn = e.target.querySelector('button[type="submit"]');
-      btn.textContent = 'Message Sent ✓';
+      const btn = document.getElementById('submit-btn');
+      btn.textContent = translations[currentLang]['contact.form.sent'] || 'Message Sent ✓';
       btn.disabled = true;
       btn.style.opacity = '0.75';
     }

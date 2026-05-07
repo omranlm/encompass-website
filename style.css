@@ -388,3 +388,48 @@ footer {
   .facts-strip { flex-direction: column; gap: 1.25rem; }
   .footer-top { flex-direction: column; }
 }
+
+/* --- LANGUAGE SWITCHER --- */
+.lang-switcher { display: flex; gap: 0.2rem; align-items: center; }
+.lang-btn {
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 0.2rem 0.45rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  cursor: pointer;
+  color: var(--color-text-light);
+  font-family: var(--font);
+  letter-spacing: 0.06em;
+  transition: all 0.15s;
+}
+.lang-btn:hover { color: var(--color-primary); border-color: var(--color-border); }
+.lang-btn.active {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+  background: rgba(30, 58, 95, 0.07);
+}
+
+/* --- RTL OVERRIDES --- */
+[dir="rtl"] .hero-bg {
+  justify-content: flex-start;
+  padding-right: 0;
+  padding-left: 4%;
+}
+[dir="rtl"] .nav-logo { flex-direction: row-reverse; }
+[dir="rtl"] .facts-strip { flex-direction: row-reverse; flex-wrap: wrap; }
+[dir="rtl"] .fact { flex-direction: row-reverse; text-align: right; }
+[dir="rtl"] .contact-item { flex-direction: row-reverse; text-align: right; }
+[dir="rtl"] .footer-logo-wrap { flex-direction: row-reverse; }
+[dir="rtl"] .footer-top { flex-direction: row-reverse; }
+[dir="rtl"] .hero-buttons { flex-direction: row-reverse; }
+[dir="rtl"] p { text-align: right; }
+[dir="rtl"] .section-label { text-align: right; }
+[dir="rtl"] .work-header p,
+[dir="rtl"] .membership-header p,
+[dir="rtl"] .contact-header p { text-align: right; }
+[dir="rtl"] .card p,
+[dir="rtl"] .membership-card p { text-align: right; }
+[dir="rtl"] .footer-tagline { text-align: right; }
+[dir="rtl"] .footer-bottom { text-align: right; }
