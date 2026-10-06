@@ -48,7 +48,13 @@ All text that can be translated is marked in `index.html` with one of these attr
 - `data-i18n-html="key"`: replaces the element's HTML (used for text with `<br>`, `<em>` and similar tags)
 - `data-i18n-placeholder="key"`: replaces an input's placeholder
 
-The text for each key is in `translations.js`. Choosing a language also sets `lang` and `dir` on `<html>`, so Arabic is shown right to left. The choice is saved in `localStorage` under `preferred-lang`.
+The text for each key is in `translations.js`. Choosing a language also sets `lang` and `dir` on `<html>`, so Arabic is shown right to left. The language can be set in the link with the `lang` parameter:
+
+- `https://encompass.ngo/?lang=en`: English
+- `https://encompass.ngo/?lang=de`: German
+- `https://encompass.ngo/?lang=ar`: Arabic
+
+Section anchors still work, for example `?lang=ar#events`. When a visitor switches language, the `lang` parameter in the address bar changes too, so a copied link opens in the same language. Without the parameter, the page uses the visitor's last choice (saved in `localStorage` under `preferred-lang`), or English if they have never chosen one. An unknown value, such as `?lang=fr`, is ignored.
 
 **To change text:** edit the key in all three languages in `translations.js`. The English text in `index.html` is only a fallback.
 **To add a language:** add a new object to `translations.js` and a new `.lang-btn` button with a matching `data-lang`.
