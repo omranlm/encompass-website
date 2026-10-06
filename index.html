@@ -379,12 +379,20 @@
       document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.classList.toggle('active', btn.dataset.lang === lang);
       });
-      localStorage.setItem('preferred-lang', lang);
+      try { localStorage.setItem('preferred-lang', lang); } catch (e) {}
+
+      // Keep ?lang= in the address bar so the current link always opens in this language
+      const url = new URL(window.location.href);
+      url.searchParams.set('lang', lang);
+      history.replaceState(null, '', url);
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-      const saved = localStorage.getItem('preferred-lang') || 'en';
-      applyLanguage(saved);
+      // Priority: ?lang= in the link, then the last language chosen, then English
+      const fromUrl = new URLSearchParams(window.location.search).get('lang');
+      let saved = null;
+      try { saved = localStorage.getItem('preferred-lang'); } catch (e) {}
+      applyLanguage(translations[fromUrl] ? fromUrl : translations[saved] ? saved : 'en');
 
       document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.addEventListener('click', () => applyLanguage(btn.dataset.lang));
