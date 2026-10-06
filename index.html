@@ -300,7 +300,7 @@
             <textarea id="message" name="message" data-i18n-placeholder="contact.form.messagePlaceholder" placeholder="Tell us more..." required></textarea>
           </div>
           <button type="submit" class="btn btn-primary" id="submit-btn" style="align-self:flex-start" data-i18n="contact.form.submit">Send Message</button>
-          <p class="form-note" id="form-note" role="status" hidden data-i18n-html="contact.form.note">Your email app should now open with your message ready — just press <strong>Send</strong> there. If nothing opens, write to us directly at <a href="mailto:info@encompass.ngo">info@encompass.ngo</a>.</p>
+          <p class="form-note" id="form-note" role="status" hidden data-i18n-html="contact.form.note">Gmail should now open in a new tab with your message ready — just press <strong>Send</strong> there. Not using Gmail? <a class="mailto-fallback" href="mailto:info@encompass.ngo">Open it in your email app</a> or write to us directly at info@encompass.ngo.</p>
         </form>
       </div>
     </div>
@@ -413,20 +413,37 @@
       });
     });
 
-    // No backend: open the visitor's email app with the message filled in
+    // No backend: open a ready-to-send email in Gmail, with a mailto: fallback for other email apps
+    const CONTACT_EMAIL = 'info@encompass.ngo';
+
+    function draftEmail() {
+      const form = document.querySelector('.contact-form');
+      const field = id => form.elements.namedItem(id).value.trim();
+      return {
+        subject: field('subject') || translations[currentLang]['contact.form.defaultSubject'],
+        body: field('message') + '\n\n— ' + field('name') + ' <' + field('email') + '>',
+      };
+    }
+
     function handleSubmit(e) {
       e.preventDefault();
-      const t = translations[currentLang];
-      const field = id => e.target.elements.namedItem(id).value.trim();
-      const subject = field('subject') || t['contact.form.defaultSubject'];
-      const body = field('message') + '\n\n— ' + field('name') + ' <' + field('email') + '>';
-
-      window.location.href = 'mailto:info@encompass.ngo'
-        + '?subject=' + encodeURIComponent(subject)
-        + '&body=' + encodeURIComponent(body);
-
+      const { subject, body } = draftEmail();
+      window.open('https://mail.google.com/mail/?view=cm&fs=1'
+        + '&to=' + encodeURIComponent(CONTACT_EMAIL)
+        + '&su=' + encodeURIComponent(subject)
+        + '&body=' + encodeURIComponent(body), '_blank', 'noopener');
       document.getElementById('form-note').hidden = false;
     }
+
+    // The note's text is replaced on language change, so build the mailto: link when it is clicked
+    document.getElementById('form-note').addEventListener('click', e => {
+      const link = e.target.closest('.mailto-fallback');
+      if (!link) return;
+      const { subject, body } = draftEmail();
+      link.href = 'mailto:' + CONTACT_EMAIL
+        + '?subject=' + encodeURIComponent(subject)
+        + '&body=' + encodeURIComponent(body);
+    });
   </script>
 
 </body>
