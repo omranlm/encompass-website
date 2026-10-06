@@ -269,7 +269,7 @@
             <div class="contact-item-icon">✉️</div>
             <div>
               <strong data-i18n="contact.email.label">Email</strong>
-              <span>info@encompass.ngo</span>
+              <span><a href="mailto:info@encompass.ngo">info@encompass.ngo</a></span>
             </div>
           </div>
           <div class="contact-item">
@@ -284,7 +284,7 @@
           <div class="form-row">
             <div class="form-group">
               <label for="name" data-i18n="contact.form.name">Full Name</label>
-              <input type="text" id="name" name="name" data-i18n-placeholder="contact.form.namePlaceholder" placeholder="Your name" autocomplete="name" required>
+              <input type="text" id="name" name="name" data-i18n-placeholder="contact.form.namePlaceholder" placeholder="Example: Basel Shahadeh" autocomplete="name" required>
             </div>
             <div class="form-group">
               <label for="email" data-i18n="contact.form.email">Email Address</label>
@@ -300,6 +300,7 @@
             <textarea id="message" name="message" data-i18n-placeholder="contact.form.messagePlaceholder" placeholder="Tell us more..." required></textarea>
           </div>
           <button type="submit" class="btn btn-primary" id="submit-btn" style="align-self:flex-start" data-i18n="contact.form.submit">Send Message</button>
+          <p class="form-note" id="form-note" role="status" hidden data-i18n-html="contact.form.note">Your email app should now open with your message ready — just press <strong>Send</strong> there. If nothing opens, write to us directly at <a href="mailto:info@encompass.ngo">info@encompass.ngo</a>.</p>
         </form>
       </div>
     </div>
@@ -412,12 +413,19 @@
       });
     });
 
+    // No backend: open the visitor's email app with the message filled in
     function handleSubmit(e) {
       e.preventDefault();
-      const btn = document.getElementById('submit-btn');
-      btn.textContent = translations[currentLang]['contact.form.sent'] || 'Message Sent ✓';
-      btn.disabled = true;
-      btn.style.opacity = '0.75';
+      const t = translations[currentLang];
+      const field = id => e.target.elements.namedItem(id).value.trim();
+      const subject = field('subject') || t['contact.form.defaultSubject'];
+      const body = field('message') + '\n\n— ' + field('name') + ' <' + field('email') + '>';
+
+      window.location.href = 'mailto:info@encompass.ngo'
+        + '?subject=' + encodeURIComponent(subject)
+        + '&body=' + encodeURIComponent(body);
+
+      document.getElementById('form-note').hidden = false;
     }
   </script>
 

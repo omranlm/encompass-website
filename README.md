@@ -38,7 +38,7 @@ The page is one long scroll. The navigation bar links to each section by its anc
 7. **Contact** (`#contact`): address (Berlin), email `info@encompass.ngo`, legal status, and a contact form (name, email, subject, message).
 8. **Footer**: logo, tagline, links to the sections and membership types, and the legal line.
 
-> **Note:** The contact form does not send anything yet. `handleSubmit()` in `index.html` only changes the button to "Message Sent ✓". To receive messages, connect the form to a form service or a backend.
+> **Contact form:** the site has no backend, so **Send Message** opens the visitor's own email app (a `mailto:` link) with a message to `info@encompass.ngo` already filled in. The subject is filled in, and the visitor's name and email are added at the end of the message. A note then tells them to press Send in their email app, and gives the address in case no email app opens. The code is `handleSubmit()` in `index.html`.
 
 ## Languages
 
