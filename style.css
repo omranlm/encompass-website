@@ -238,6 +238,49 @@ nav {
 .card h3 { color: var(--color-primary); margin-bottom: 0.5rem; }
 .card p { color: var(--color-text-light); font-size: 0.92rem; max-width: none; line-height: 1.55; }
 
+/* --- EVENTS --- */
+.events { background: var(--color-primary); color: white; }
+.events-header { margin-bottom: 3rem; }
+.events-header h2 { color: white; margin-bottom: 0.75rem; }
+.events-header p { color: rgba(255,255,255,0.7); font-size: 1.03rem; }
+.event-card {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 2.5rem;
+  padding: 2.5rem;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-top: 3px solid var(--color-accent);
+  border-radius: var(--radius);
+  background: rgba(255,255,255,0.04);
+}
+.event-tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.65rem;
+  border-radius: 4px;
+  background: rgba(201,162,39,0.15);
+  color: var(--color-accent);
+  margin-bottom: 1rem;
+}
+.event-main h3 { font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.2; margin-bottom: 0.8rem; }
+.event-main p { color: rgba(255,255,255,0.75); line-height: 1.6; }
+.event-details { display: flex; flex-direction: column; gap: 1.25rem; }
+.event-detail strong {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--color-accent);
+  margin-bottom: 0.2rem;
+}
+.event-detail span { font-size: 0.98rem; color: white; line-height: 1.5; }
+.event-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 0.5rem; }
+
+@media (max-width: 768px) {
+  .event-card { grid-template-columns: 1fr; gap: 2rem; padding: 1.75rem; }
+}
+
 /* --- MEMBERSHIP --- */
 .membership { background: var(--color-white); }
 .membership-header { margin-bottom: 3rem; }
@@ -427,6 +470,7 @@ footer {
 [dir="rtl"] p { text-align: right; }
 [dir="rtl"] .section-label { text-align: right; }
 [dir="rtl"] .work-header p,
+[dir="rtl"] .events-header p,
 [dir="rtl"] .membership-header p,
 [dir="rtl"] .contact-header p { text-align: right; }
 [dir="rtl"] .card p,

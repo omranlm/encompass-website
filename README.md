@@ -11,13 +11,14 @@ It is a single static page with no build step and no dependencies. It is availab
 | `index.html` | The whole page: markup, inline SVG logos and the small script for language switching and the mobile menu |
 | `style.css` | All styles. The colours and layout values are CSS variables in `:root` |
 | `translations.js` | The text of the page in each language (`en`, `de`, `ar`) |
+| `events/` | Calendar files (`.ics`) for the "Add to Calendar" buttons |
 | `.github/workflows/` | GitHub Actions workflows that deploy the site to GitHub Pages |
 
 ## Page content
 
 The page is one long scroll. The navigation bar links to each section by its anchor.
 
-1. **Navigation**: compass logo, links (About, What We Do, Membership, Contact), the EN / DE / AR language switcher, and a hamburger menu on small screens.
+1. **Navigation**: compass logo, links (About, What We Do, Events, Membership, Contact), the EN / DE / AR language switcher, and a hamburger menu on small screens.
 2. **Hero** (`#home`): "Berlin · Est. 2024". The headline is *Advancing Liberal Values & Personal Freedoms*, with buttons to *Our Mission* and *Join Us*.
 3. **About** (`#about`): who the association is and why it exists. Three key facts:
    - Based in Berlin, registered e.V. under German law
@@ -28,12 +29,14 @@ The page is one long scroll. The navigation bar links to each section by its anc
    - **Media & Content**: print, digital and broadcast content about liberal values
    - **Workshops & Seminars**: educational events for practitioners, academics, students and the public
    - **Authors & Academics**: platforms, funding and networks for writers and researchers
-5. **Membership** (`#membership`): the three types of membership:
+5. **Events** (`#events`): upcoming events, each with buttons to add it to a calendar and to get directions. The current event is:
+   - **Berlin Voted — Now What?** (*برلين صوّتت، هلأ شو؟*): an open discussion in Arabic about the election results. Saturday 7 November 2026, 7 pm, at Casino for Social Medicine, Sonnenallee 100, 12045 Berlin
+6. **Membership** (`#membership`): the three types of membership:
    - **Ordinary (Active) Member**: pays fees and volunteers. Full voting rights and can stand for election
    - **Honorary Member**: appointed by the General Assembly. Full voting rights
    - **Supporting Member**: gives financial support only. Open to legal entities. No voting rights
-6. **Contact** (`#contact`): address (Berlin), email `info@encompass.ngo`, legal status, and a contact form (name, email, subject, message).
-7. **Footer**: logo, tagline, links to the sections and membership types, and the legal line.
+7. **Contact** (`#contact`): address (Berlin), email `info@encompass.ngo`, legal status, and a contact form (name, email, subject, message).
+8. **Footer**: logo, tagline, links to the sections and membership types, and the legal line.
 
 > **Note:** The contact form does not send anything yet. `handleSubmit()` in `index.html` only changes the button to "Message Sent ✓". To receive messages, connect the form to a form service or a backend.
 

@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//EnCompass e.V.//Events//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:2026-11-07-berlin-voted@encompass.ngo
+DTSTAMP:20261006T000000Z
+DTSTART:20261107T180000Z
+DTEND:20261107T200000Z
+SUMMARY:برلين صوّتت، هلأ شو؟ / Berlin Voted — Now What?
+DESCRIPTION:Open discussion in Arabic about the election results and what has happened since. Hosted by EnCompass e.V. — encompass.ngo
+LOCATION:Casino for Social Medicine\, Sonnenallee 100\, 12045 Berlin
+URL:https://encompass.ngo/#events
+END:VEVENT
+END:VCALENDAR
