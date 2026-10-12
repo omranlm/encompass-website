@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EnCompass Design Canvas</title>
+<link rel="stylesheet" href="artboards/fonts.css">
+<style>
+  :root {
+    --canvas: #E9E6DE;
+    --dot: rgba(14, 26, 43, 0.12);
+    --bar: #0E1A2B;
+    --bar-text: #F4F1EA;
+    --muted: #8E9BB0;
+    --gold: #C9A24A;
+    --label: #4A5568;
+    --label-strong: #0E1A2B;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; overflow: hidden; background: var(--canvas); font-family: Manrope, system-ui, sans-serif; }
+
+  /* --- Toolbar --- */
+  .bar {
+    position: fixed; inset: 0 0 auto 0; z-index: 10;
+    display: flex; align-items: center; gap: 16px;
+    height: 56px; padding: 0 16px;
+    background: var(--bar); color: var(--bar-text);
+  }
+  .brand { display: flex; align-items: center; gap: 10px; white-space: nowrap; font-size: 15px; letter-spacing: -0.01em; }
+  .brand b { font-weight: 800; }
+  .brand span { font-weight: 300; }
+  .brand em { font-style: normal; font-weight: 500; color: var(--gold); font-size: 12px; }
+  .brand small { color: var(--muted); font-size: 12px; font-weight: 500; margin-left: 6px; }
+  .boards { display: flex; gap: 4px; overflow-x: auto; flex: 1; scrollbar-width: none; }
+  .boards::-webkit-scrollbar { display: none; }
+  .bar button {
+    font: 600 12px/1 Manrope, system-ui, sans-serif; color: var(--bar-text);
+    background: transparent; border: 1px solid rgba(244, 241, 234, 0.15); border-radius: 6px;
+    padding: 8px 10px; cursor: pointer; white-space: nowrap;
+  }
+  .bar button:hover { border-color: var(--gold); color: var(--gold); }
+  .zoom { display: flex; align-items: center; gap: 4px; }
+  .zoom output { min-width: 52px; text-align: center; font-size: 12px; font-weight: 600; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+  /* --- Canvas --- */
+  .viewport {
+    position: fixed; inset: 56px 0 0 0; cursor: grab; touch-action: none;
+    background-image: radial-gradient(var(--dot) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+  .viewport.panning { cursor: grabbing; }
+  .world { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+  .board { position: absolute; }
+  .board header {
+    position: absolute; left: 0; right: 0; bottom: 100%; padding-bottom: 0.6em;
+    display: flex; align-items: center; gap: 0.6em; white-space: nowrap;
+    font-size: calc(13px / var(--z, 1)); color: var(--label);   /* same size on screen at any zoom */
+  }
+  .board header { z-index: 2; cursor: default; }
+  .board header > a, .board header > span { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+  .board header > span { flex-shrink: 2; }   /* the size gives way before the title */
+  .board header > a { color: var(--label-strong); font-weight: 700; text-decoration: none; }
+  .board header > a:hover { color: var(--gold); text-decoration: underline; }
+
+  /* Download menu (sizes in em so it follows the label's zoom-independent size) */
+  .dl { position: relative; margin-left: auto; flex-shrink: 0; }
+  .dl summary {
+    list-style: none; cursor: pointer; user-select: none;
+    display: inline-flex; align-items: center; gap: 0.35em;
+    font-weight: 700; color: var(--label-strong);
+    padding: 0.25em 0.6em; border: 1px solid rgba(14, 26, 43, 0.2); border-radius: 0.4em;
+    background: rgba(244, 241, 234, 0.7);
+  }
+  .dl summary::-webkit-details-marker { display: none; }
+  .dl summary:hover, .dl[open] summary { border-color: var(--gold); color: #8A6A22; background: #F4F1EA; }
+  .dl summary svg { width: 1em; height: 1em; }
+  .dl .menu {
+    position: absolute; right: 0; top: calc(100% + 0.4em); min-width: 17em;
+    display: flex; flex-direction: column; padding: 0.35em;
+    background: #FFFFFF; border: 1px solid #E2DACA; border-radius: 0.5em;
+    box-shadow: 0 0.6em 2em rgba(14, 26, 43, 0.18);
+  }
+  .dl .menu a {
+    display: flex; justify-content: space-between; gap: 1.5em;
+    padding: 0.55em 0.7em; border-radius: 0.35em;
+    color: var(--label-strong); text-decoration: none; font-weight: 700;
+  }
+  .dl .menu a span { color: var(--label); font-weight: 500; }
+  .dl .menu a:hover { background: #F4F1EA; color: #8A6A22; }
+  .dl .menu hr { border: 0; border-top: 1px solid #E2DACA; margin: 0.3em 0.4em; }
+  .board iframe {
+    display: block; border: 0; background: #0E1A2B;
+    box-shadow: 0 2px 6px rgba(14, 26, 43, 0.12), 0 12px 40px rgba(14, 26, 43, 0.14);
+    pointer-events: none;   /* the canvas handles all mouse input */
+  }
+  .hint { position: fixed; right: 16px; bottom: 12px; font-size: 12px; color: var(--label); background: rgba(244, 241, 234, 0.85); padding: 6px 10px; border-radius: 6px; }
+
+  @media (max-width: 720px) {
+    .brand small, .hint { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <div class="brand">
+    <svg width="26" height="26" viewBox="0 0 120 120" fill="none" aria-hidden="true"><circle cx="60" cy="60" r="40" stroke="#C9A24A" stroke-width="6"/><path d="M60 12 L67 53 L60 60 L53 53 Z" fill="#C9A24A"/><path d="M60 108 L67 67 L60 60 L53 67 Z" stroke="#C9A24A" stroke-width="5"/><path d="M12 60 L53 53 L60 60 L53 67 Z" stroke="#C9A24A" stroke-width="5"/><path d="M108 60 L67 53 L60 60 L67 67 Z" stroke="#C9A24A" stroke-width="5"/></svg>
+    <div><span>En</span><b>Compass</b> <em>e.V.</em><small>Design canvas</small></div>
+  </div>
+  <nav class="boards" id="board-nav" aria-label="Artboards"></nav>
+  <div class="zoom">
+    <button id="zoom-out" title="Zoom out (−)">−</button>
+    <output id="zoom-level">100%</output>
+    <button id="zoom-in" title="Zoom in (+)">+</button>
+    <button id="zoom-fit" title="Fit all (0)">Fit</button>
+    <button id="zoom-100" title="Actual size (1)">100%</button>
+  </div>
+</div>
+
+<div class="viewport" id="viewport">
+  <div class="world" id="world"></div>
+</div>
+<div class="hint">Drag to pan · Ctrl/⌘ + scroll to zoom · Double-click an artboard to focus</div>
+
+<script src="artboards/artboards.js"></script>
+<script>
+  // Artboards come from artboards/artboards.js; each row is laid out left to right
+  const ROWS = [];
+  for (const b of window.ARTBOARDS) (ROWS[b.row] = ROWS[b.row] || []).push(b);
+  const GAP = 200, ROW_GAP = 260, MARGIN = 120, LABEL = 56;
+
+  // Download formats. Image and PDF files are made by export.py into exports/
+  const DOWNLOAD_ICON = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v8M4.5 6.5 8 10l3.5-3.5M2.5 13.5h11"/></svg>';
+  function downloadMenu(b) {
+    const pdfSize = b.page ? b.page.replace(/(\d+)mm (\d+)mm/, '$1 × $2 mm') : `${b.w} × ${b.h} px`;
+    const items = [
+      ['PNG',       `${b.w} × ${b.h}`,         `exports/${b.file}.png`],
+      ['PNG @2x',   `${b.w * 2} × ${b.h * 2}`, `exports/${b.file}@2x.png`],
+      ['JPG',       `${b.w} × ${b.h}`,         `exports/${b.file}.jpg`],
+      ['PDF',       pdfSize,                   `exports/${b.file}.pdf`],
+      null,
+      ['HTML',      'editable source',         `artboards/${b.file}.html`],
+    ];
+    return `<details class="dl"><summary>${DOWNLOAD_ICON}Download</summary><div class="menu">` +
+      items.map(i => i ? `<a href="${i[2]}" download><b>${i[0]}</b><span>${i[1]}</span></a>` : '<hr>').join('') +
+      `</div></details>`;
+  }
+
+  const viewport = document.getElementById('viewport');
+  const world = document.getElementById('world');
+  const nav = document.getElementById('board-nav');
+  const zoomLevel = document.getElementById('zoom-level');
+  const boards = [];
+
+  // --- Build the artboards ---
+  let y = 0, worldW = 0;
+  for (const row of ROWS) {
+    let x = 0, rowH = 0;
+    for (const b of row) {
+      b.x = x; b.y = y + LABEL;
+      const el = document.createElement('section');
+      el.className = 'board';
+      el.style.cssText = `left:${b.x}px;top:${b.y}px;width:${b.w}px;height:${b.h}px`;
+      el.innerHTML =
+        `<header><a href="artboards/${b.file}.html" target="_blank" rel="noopener">${b.title}</a>` +
+        `<span>${b.w} × ${b.h}${b.note ? ' · ' + b.note : ''}</span>${downloadMenu(b)}</header>` +
+        `<iframe src="artboards/${b.file}.html" title="${b.title}" width="${b.w}" height="${b.h}" loading="eager" scrolling="no"></iframe>`;
+      el.addEventListener('dblclick', () => focusBoard(b));
+      world.appendChild(el);
+
+      const btn = document.createElement('button');
+      btn.textContent = b.title;
+      btn.addEventListener('click', () => focusBoard(b));
+      nav.appendChild(btn);
+
+      boards.push(b);
+      x += b.w + GAP;
+      rowH = Math.max(rowH, b.h);
+    }
+    worldW = Math.max(worldW, x - GAP);
+    y += LABEL + rowH + ROW_GAP;
+  }
+  const worldH = y - ROW_GAP;
+
+  // --- Camera ---
+  const cam = { x: 0, y: 0, z: 1 };
+  const MIN_Z = 0.05, MAX_Z = 4;
+
+  function apply() {
+    world.style.transform = `translate(${cam.x}px, ${cam.y}px) scale(${cam.z})`;
+    world.style.setProperty('--z', cam.z);
+    zoomLevel.textContent = Math.round(cam.z * 100) + '%';
+    viewport.style.backgroundSize = `${24 * cam.z}px ${24 * cam.z}px`;
+    viewport.style.backgroundPosition = `${cam.x}px ${cam.y}px`;
+  }
+
+  function zoomAt(z, px, py) {
+    z = Math.min(MAX_Z, Math.max(MIN_Z, z));
+    cam.x = px - (px - cam.x) * (z / cam.z);
+    cam.y = py - (py - cam.y) * (z / cam.z);
+    cam.z = z;
+    apply();
+  }
+
+  function fitRect(x, y, w, h, pad) {
+    const vw = viewport.clientWidth, vh = viewport.clientHeight;
+    const z = Math.min(MAX_Z, (vw - pad * 2) / w, (vh - pad * 2) / h);
+    cam.z = z;
+    cam.x = (vw - w * z) / 2 - x * z;
+    cam.y = (vh - h * z) / 2 - y * z;
+    apply();
+  }
+
+  const fitAll = () => fitRect(-MARGIN, -MARGIN, worldW + MARGIN * 2, worldH + MARGIN * 2, 0);
+  const focusBoard = b => fitRect(b.x, b.y - LABEL, b.w, b.h + LABEL, 48);
+  const center = () => [viewport.clientWidth / 2, viewport.clientHeight / 2];
+
+  // --- Input ---
+  let drag = null;
+  viewport.addEventListener('pointerdown', e => {
+    if (e.target.closest('header')) return;   // titles and download menus, not the canvas
+    drag = { x: e.clientX, y: e.clientY, cx: cam.x, cy: cam.y };
+    viewport.setPointerCapture(e.pointerId);
+    viewport.classList.add('panning');
+  });
+  viewport.addEventListener('pointermove', e => {
+    if (!drag) return;
+    cam.x = drag.cx + e.clientX - drag.x;
+    cam.y = drag.cy + e.clientY - drag.y;
+    apply();
+  });
+  const endDrag = () => { drag = null; viewport.classList.remove('panning'); };
+  viewport.addEventListener('pointerup', endDrag);
+  viewport.addEventListener('pointercancel', endDrag);
+
+  // Ctrl/⌘ + wheel (and trackpad pinch) zooms at the cursor; plain wheel pans
+  viewport.addEventListener('wheel', e => {
+    e.preventDefault();
+    const r = viewport.getBoundingClientRect();
+    if (e.ctrlKey || e.metaKey) {
+      zoomAt(cam.z * Math.exp(-e.deltaY * 0.01), e.clientX - r.left, e.clientY - r.top);
+    } else {
+      cam.x -= e.deltaX;
+      cam.y -= e.deltaY;
+      apply();
+    }
+  }, { passive: false });
+
+  document.getElementById('zoom-in').onclick = () => zoomAt(cam.z * 1.25, ...center());
+  document.getElementById('zoom-out').onclick = () => zoomAt(cam.z / 1.25, ...center());
+  document.getElementById('zoom-fit').onclick = fitAll;
+  document.getElementById('zoom-100').onclick = () => zoomAt(1, ...center());
+
+  // Only one download menu open at a time; close it on outside click, Esc, or after picking a format
+  const closeMenus = except => document.querySelectorAll('.dl[open]').forEach(d => { if (d !== except) d.open = false; });
+  document.addEventListener('pointerdown', e => closeMenus(e.target.closest('.dl')));
+  world.addEventListener('toggle', e => { if (e.target.open) closeMenus(e.target); }, true);
+  world.addEventListener('click', e => { if (e.target.closest('.dl .menu a')) closeMenus(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenus(); });
+
+  document.addEventListener('keydown', e => {
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
+    if (e.key === '+' || e.key === '=') zoomAt(cam.z * 1.25, ...center());
+    else if (e.key === '-') zoomAt(cam.z / 1.25, ...center());
+    else if (e.key === '0') fitAll();
+    else if (e.key === '1') zoomAt(1, ...center());
+  });
+
+  window.addEventListener('resize', fitAll);
+  fitAll();
+</script>
+</body>
+</html>

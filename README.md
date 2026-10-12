@@ -12,6 +12,7 @@ It is a single static page with no build step and no dependencies. It is availab
 | `style.css` | All styles. The colours and layout values are CSS variables in `:root` |
 | `translations.js` | The text of the page in each language (`en`, `de`, `ar`) |
 | `events/` | Calendar files (`.ics`) for the "Add to Calendar" buttons |
+| `assets/` | Brand designs: `canvas.html` shows all artboards together; `artboards/` holds the editable source of each one |
 | `.github/workflows/` | GitHub Actions workflows that deploy the site to GitHub Pages |
 
 ## Page content
@@ -64,6 +65,49 @@ Section anchors still work, for example `?lang=ar#events`. When a visitor switch
 - Theme: a compass, in navy `#1E3A5F` (`--color-primary`) and gold `#C9A227` (`--color-accent`)
 - Font: the system font stack, so no web fonts are loaded
 - Logos and illustrations are inline SVG, so there are no image files
+
+### Brand designs (`assets/`)
+
+The brand's designs are kept as plain HTML artboards, so they can be edited in any text editor and viewed in a browser:
+
+| File | Size |
+|------|------|
+| `artboards/visual-identity.html` | 1600 × 1200: logo, colours and fonts ("Brand Basics 1.0") |
+| `artboards/logo.html` | 1600 × 800: the logo on Midnight |
+| `artboards/instagram-post.html` | 1080 × 1080: "Berlin Votes" event post (Arabic, German, English) |
+| `artboards/carousel-1-event-ar.html` | 1080 × 1080: the event, in Arabic |
+| `artboards/carousel-2-about.html` | 1080 × 1080: About EnCompass |
+| `artboards/print-poster-a3.html` | 1123 × 1587: A3 print poster (297 × 420 mm) |
+| `artboards/print-poster-a3-fun.html` | 1123 × 1587: a playful A3 version of the event poster (speech bubbles, ballot paper, bunting) |
+
+`artboards/fonts.css` and `artboards/fonts/` hold the brand fonts as local files: **Manrope** (variable, 300–800) and **IBM Plex Sans Arabic** (300–700). The artboards work offline.
+
+Open **`assets/canvas.html`** to see every artboard on one canvas. Drag to pan, use Ctrl/⌘ + scroll to zoom, and click a name in the toolbar (or double-click an artboard) to focus it. Click an artboard's title to open it alone at full size.
+
+**Downloads.** Each artboard on the canvas has a **Download** menu with these formats:
+
+| Format | Use it for |
+|--------|------------|
+| PNG | Exact size, for example 1080 × 1080 for Instagram |
+| PNG @2x | Double resolution, for sharp screens and large prints |
+| JPG | Exact size, smaller file, for uploading to social media |
+| PDF | Printing. One page at the artboard's size (true A3 for the poster), with text kept as text so it stays sharp |
+| HTML | The editable source |
+
+The image and PDF files live in `assets/exports/` and are made by `assets/export.py`. **After editing an artboard, run the script again** so the downloads match:
+
+```sh
+python assets/export.py              # all artboards
+python assets/export.py logo         # only the ones named
+```
+
+The script needs Google Chrome or Microsoft Edge (set `CHROME=/path/to/browser` if it isn't found) and Pillow for JPG (`pip install pillow`).
+
+To add an artboard, create its HTML file in `artboards/` (link `fonts.css`, give `body` the artboard's size and add an `@page` rule with the same size, as the other artboards do). Then add it to `artboards/artboards.js` and run `export.py`.
+
+The original exported design bundle, `Berlin Votes — EnCompass Instagram Poster (1).html`, is kept as is for reference. The artboards were extracted from it.
+
+**Brand colours:** Midnight `#0E1A2B`, Spree Blue `#13284A`, Compass Gold `#C9A24A`, Ivory `#F4F1EA`, Slate `#8E9BB0`. The website itself does not use these yet.
 
 ## Running locally
 

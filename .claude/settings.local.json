@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Path \"g:\\\\My Drive\\\\Work\\\\encompass ev\\\\website\" -Force)",
+      "Bash(Select-Object FullName, PSIsContainer, Length)",
+      "Bash(Format-Table -AutoSize)",
+      "Bash(git init *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git remote *)",
+      "Bash(git push *)",
+      "PowerShell(Get-Command gh -ErrorAction SilentlyContinue)",
+      "Bash(git pull *)"
+    ]
+  }
+}
