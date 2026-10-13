@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1600">
+<title>Google Form header · Berlin Votes</title>
+<link rel="stylesheet" href="fonts.css">
+<style>
+  html, body { margin: 0; background: #0E1A2B; }
+  body { width: 1600px; height: 400px; overflow: hidden; }
+  /* For PDF export: one page at the artboard's size, with backgrounds */
+  @page { size: 1600px 400px; margin: 0; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+</style>
+</head>
+<body>
+<!-- Google Forms header image: 1600 × 400 (4:1). Key content stays inside 80 px side margins. -->
+<div dir="rtl" style="width: 1600px; height: 400px; box-sizing: border-box; position: relative; overflow: hidden; background: #0E1A2B; color: #F4F1EA; font-family: 'IBM Plex Sans Arabic', 'Noto Sans Arabic', Tahoma, sans-serif; padding: 52px 96px 60px; display: flex; justify-content: space-between; align-items: center; gap: 56px;">
+
+  <!-- Faint compass ring, top left like the poster -->
+  <svg width="640" height="640" viewBox="0 0 640 640" fill="none" aria-hidden="true" style="position: absolute; top: -250px; left: -170px; opacity: 0.09;">
+    <circle cx="320" cy="320" r="300" stroke="#C9A24A" stroke-width="1.5"/>
+    <circle cx="320" cy="320" r="236" stroke="#C9A24A" stroke-width="1"/>
+    <path d="M320 20 L338 302 L320 320 L302 302 Z" stroke="#C9A24A" stroke-width="1.5"/>
+    <path d="M320 620 L338 338 L320 320 L302 338 Z" stroke="#C9A24A" stroke-width="1"/>
+    <path d="M20 320 L302 302 L320 320 L302 338 Z" stroke="#C9A24A" stroke-width="1"/>
+    <path d="M620 320 L338 302 L320 320 L338 338 Z" stroke="#C9A24A" stroke-width="1"/>
+  </svg>
+
+  <!-- Berlin skyline along the bottom edge -->
+  <svg width="1600" height="64" viewBox="0 0 1600 64" preserveAspectRatio="none" fill="none" aria-hidden="true" style="position: absolute; left: 0; bottom: 0; opacity: 0.45;">
+    <path d="M0 63 H220 V48 H300 V54 H390 V40 H430 V54 H520 V63 H600 V44 H616 V36 H760 V44 H776 V63 H784 V44 M640 63 V44 M676 63 V44 M712 63 V44 M776 44 H784 M784 63 H900 V50 H960 V56 H1010 V63 H1032 V30 M1040 63 V30 M1032 30 H1040 M1036 30 V8 M1036 8 V0 M1080 63 H1120 V46 H1190 V54 H1260 V42 H1300 V54 H1600" stroke="#C9A24A" stroke-width="1.5" stroke-linejoin="round"/>
+    <circle cx="1036" cy="17" r="8" stroke="#C9A24A" stroke-width="1.5"/>
+  </svg>
+
+  <!-- Title -->
+  <div style="position: relative; display: flex; flex-direction: column; gap: 10px; min-width: 0;">
+    <div style="display: flex; align-items: center; gap: 14px; font-size: 24px; font-weight: 700; color: #C9A24A;">
+      <svg width="34" height="34" viewBox="0 0 120 120" fill="none" aria-hidden="true">
+        <circle cx="60" cy="60" r="40" stroke="#C9A24A" stroke-width="6"/>
+        <path d="M60 12 L67 53 L60 60 L53 53 Z" fill="#C9A24A"/>
+        <path d="M60 108 L67 67 L60 60 L53 67 Z" stroke="#C9A24A" stroke-width="5"/>
+        <path d="M12 60 L53 53 L60 60 L53 67 Z" stroke="#C9A24A" stroke-width="5"/>
+        <path d="M108 60 L67 53 L60 60 L67 67 Z" stroke="#C9A24A" stroke-width="5"/>
+      </svg>
+      من إنكومباس <span style="font-weight: 500; color: #C3CCDA;">· حوار مفتوح بالعربي</span>
+    </div>
+    <h1 style="margin: 0; font-size: 96px; font-weight: 700; line-height: 1.15; white-space: nowrap;">برلين صوتت، <span style="color: #C9A24A;">هلأ شو؟</span></h1>
+    <p style="margin: 0; font-size: 30px; font-weight: 500; line-height: 1.4; color: #C3CCDA;">تعوا نحكي عن نتائج الانتخابات وشو صار بعدين!</p>
+  </div>
+
+  <!-- When & where -->
+  <div style="position: relative; flex-shrink: 0; display: flex; flex-direction: column; gap: 22px; border-right: 2px solid rgba(201, 162, 74, 0.55); padding-right: 44px;">
+    <div>
+      <div style="font-size: 22px; font-weight: 700; color: #C9A24A;">إيمتى؟</div>
+      <div style="font-size: 44px; font-weight: 700; line-height: 1.2; white-space: nowrap;">7 نوفمبر <span style="font-size: 24px; font-weight: 500; color: #C9A24A;">تشرين التاني</span> 2026</div>
+      <div style="font-size: 26px; font-weight: 600; line-height: 1.35; color: #C3CCDA;">السبت · 7 المسا</div>
+    </div>
+    <div>
+      <div style="font-size: 22px; font-weight: 700; color: #C9A24A;">وين؟</div>
+      <div dir="ltr" style="font-family: Manrope, 'Helvetica Neue', Helvetica, sans-serif; font-size: 32px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.2; text-align: right; white-space: nowrap;">Casino for Social Medicine</div>
+      <div dir="ltr" style="font-family: Manrope, 'Helvetica Neue', Helvetica, sans-serif; font-size: 22px; font-weight: 600; line-height: 1.4; color: #C3CCDA; text-align: right;">Sonnenallee 100, 12045 Berlin</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

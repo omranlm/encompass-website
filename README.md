@@ -12,7 +12,7 @@ It is a single static page with no build step and no dependencies. It is availab
 | `style.css` | All styles. The colours and layout values are CSS variables in `:root` |
 | `translations.js` | The text of the page in each language (`en`, `de`, `ar`) |
 | `events/` | Calendar files (`.ics`) for the "Add to Calendar" buttons |
-| `assets/` | Brand designs: `canvas.html` shows all artboards together; `artboards/` holds the editable source of each one |
+| `assets/` | Brand designs: `designs.html` shows all artboards together; `artboards/` holds the editable source of each one |
 | `.github/workflows/` | GitHub Actions workflows that deploy the site to GitHub Pages |
 
 ## Page content
@@ -74,6 +74,7 @@ The brand's designs are kept as plain HTML artboards, so they can be edited in a
 |------|------|
 | `artboards/visual-identity.html` | 1600 × 1200: logo, colours and fonts ("Brand Basics 1.0") |
 | `artboards/logo.html` | 1600 × 800: the logo on Midnight |
+| `artboards/google-form-header.html` | 1600 × 400: header image for the event's Google Form (same details as the A3 poster, no QR code) |
 | `artboards/instagram-post.html` | 1080 × 1080: "Berlin Votes" event post (Arabic, German, English) |
 | `artboards/carousel-1-event-ar.html` | 1080 × 1080: the event, in Arabic |
 | `artboards/carousel-2-about.html` | 1080 × 1080: About EnCompass |
@@ -82,7 +83,7 @@ The brand's designs are kept as plain HTML artboards, so they can be edited in a
 
 `artboards/fonts.css` and `artboards/fonts/` hold the brand fonts as local files: **Manrope** (variable, 300–800) and **IBM Plex Sans Arabic** (300–700). The artboards work offline.
 
-Open **`assets/canvas.html`** to see every artboard on one canvas. Drag to pan, use Ctrl/⌘ + scroll to zoom, and click a name in the toolbar (or double-click an artboard) to focus it. Click an artboard's title to open it alone at full size.
+Open **`assets/designs.html`** to see every artboard on one canvas. Drag to pan, use Ctrl/⌘ + scroll to zoom, and click a name in the toolbar (or double-click an artboard) to focus it. Click an artboard's title to open it alone at full size.
 
 **Downloads.** Each artboard on the canvas has a **Download** menu with these formats:
 
