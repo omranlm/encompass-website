@@ -30,8 +30,8 @@ The page is one long scroll. The navigation bar links to each section by its anc
    - **Media & Content**: print, digital and broadcast content about liberal values
    - **Workshops & Seminars**: educational events for practitioners, academics, students and the public
    - **Authors & Academics**: platforms, funding and networks for writers and researchers
-5. **Events** (`#events`): upcoming events, each with buttons to add it to a calendar and to get directions. The current event is:
-   - **Berlin Voted — Now What?** (*برلين صوّتت، هلأ شو؟*): an open discussion in Arabic about the election results. Saturday 7 November 2026, 7 pm, at Casino for Social Medicine, Sonnenallee 100, 12045 Berlin
+5. **Events** (`#events`): upcoming events, each with buttons to register, add it to a calendar and get directions. The current event is:
+   - **Berlin Voted — Now What?** (*برلين صوّتت، هلأ شو؟*): an open discussion in Arabic about the election results. Saturday 7 November 2026, 7 pm, at Casino for Social Medicine, Sonnenallee 100, 12045 Berlin. Registration: [forms.gle/igDyNW962T2jzQc28](https://forms.gle/igDyNW962T2jzQc28)
 6. **Membership** (`#membership`): the three types of membership:
    - **Ordinary (Active) Member**: pays fees and volunteers. Full voting rights and can stand for election
    - **Honorary Member**: appointed by the General Assembly. Full voting rights
