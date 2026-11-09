@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+  <!-- EnCompass app icon: Midnight mark on Compass Gold. Small sizes use ring + north point only (brand rule). -->
+  <rect width="120" height="120" rx="26" fill="#C9A24A"/>
+  <circle cx="60" cy="60" r="34" fill="none" stroke="#0E1A2B" stroke-width="9"/>
+  <path d="M60 10 L70 52 L60 60 L50 52 Z" fill="#0E1A2B"/>
+</svg>

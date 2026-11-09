@@ -5,6 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="EnCompass e.V. — A Berlin-based non-profit advancing liberal values and personal freedoms through culture, media, workshops, and academic support.">
   <title>EnCompass e.V. — Advancing Liberal Values &amp; Personal Freedoms</title>
+
+  <!-- Icons: brand app icon (Midnight mark on Compass Gold) -->
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <!-- Link previews (WhatsApp, Facebook, LinkedIn, X, Telegram…). Image source: assets/artboards/social-preview.html -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="EnCompass e.V.">
+  <meta property="og:url" content="https://encompass.ngo/">
+  <meta property="og:title" content="EnCompass e.V. — Advancing Liberal Values &amp; Personal Freedoms">
+  <meta property="og:description" content="A Berlin-based non-profit advancing liberal values and personal freedoms through culture, media, workshops, and academic support.">
+  <meta property="og:image" content="https://encompass.ngo/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="EnCompass e.V. logo with the tagline in English, Arabic and German">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="de_DE">
+  <meta property="og:locale:alternate" content="ar_AR">
+  <meta name="twitter:card" content="summary_large_image">
+
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -181,7 +202,11 @@
     </div>
   </section>
 
-  <!-- EVENTS -->
+  <!-- EVENTS
+       Each event carries data-end (when it finishes, with time zone). On load, the script at the
+       bottom moves ended events into "Past Events", so nothing has to be changed by hand afterwards.
+       To add an event: copy an <article class="event-card"> into #events-upcoming, set data-end,
+       and add its text keys to translations.js. -->
   <section class="events section" id="events">
     <div class="container">
       <div class="events-header">
@@ -189,28 +214,59 @@
         <h2 data-i18n="events.h2">Upcoming Events</h2>
         <p data-i18n="events.intro">Open discussions, workshops, and gatherings in Berlin — everyone is welcome.</p>
       </div>
-      <article class="event-card">
-        <div class="event-main">
-          <div class="event-tag" data-i18n="events.e1.tag">Open discussion · in Arabic</div>
-          <h3 data-i18n="events.e1.title">Berlin Voted — Now What?</h3>
-          <p data-i18n="events.e1.body">Let's talk about the election results and everything that has happened since. Come along and share your views!</p>
-        </div>
-        <div class="event-details">
-          <div class="event-detail">
-            <strong data-i18n="events.when">When?</strong>
-            <span data-i18n-html="events.e1.when">Saturday, 7 November 2026<br>7:00 pm</span>
+
+      <div class="events-list" id="events-upcoming">
+        <article class="event-card" data-end="2026-11-07T21:00:00+01:00">
+          <div class="event-main">
+            <div class="event-tags">
+              <span class="event-tag" data-i18n="events.e1.tag">Open discussion · in Arabic</span>
+              <span class="event-tag event-tag-past" data-i18n="events.pastBadge">Past event</span>
+            </div>
+            <h3 data-i18n="events.e1.title">Berlin Voted — Now What?</h3>
+            <p class="event-body-upcoming" data-i18n="events.e1.body">Let's talk about the election results and everything that has happened since. Come along and share your views!</p>
+            <p class="event-body-past" data-i18n="events.e1.pastBody">An open discussion in Arabic about the Berlin election results and what came after.</p>
           </div>
-          <div class="event-detail">
-            <strong data-i18n="events.where">Where?</strong>
-            <span>Casino for Social Medicine<br>Sonnenallee 100, 12045 Berlin</span>
+          <div class="event-details">
+            <div class="event-detail">
+              <strong data-i18n="events.when">When?</strong>
+              <span data-i18n-html="events.e1.when">Saturday, 7 November 2026<br>7:00 pm</span>
+            </div>
+            <div class="event-detail">
+              <strong data-i18n="events.where">Where?</strong>
+              <span>Casino for Social Medicine<br>Sonnenallee 100, 12045 Berlin</span>
+            </div>
+            <div class="event-actions">
+              <a href="https://forms.gle/igDyNW962T2jzQc28" class="btn btn-primary" target="_blank" rel="noopener" data-i18n="events.register">Register Now</a>
+              <a href="events/2026-11-07-berlin-voted/calendar.ics" class="btn btn-outline" download="2026-11-07-berlin-voted.ics" data-i18n="events.calendar">Add to Calendar</a>
+              <a href="https://www.google.com/maps/search/?api=1&amp;query=Sonnenallee+100,+12045+Berlin" class="btn btn-outline" target="_blank" rel="noopener" data-i18n="events.directions">Get Directions</a>
+            </div>
           </div>
-          <div class="event-actions">
-            <a href="https://forms.gle/igDyNW962T2jzQc28" class="btn btn-primary" target="_blank" rel="noopener" data-i18n="events.register">Register Now</a>
-            <a href="events/2026-11-07-berlin-voted.ics" class="btn btn-outline" download data-i18n="events.calendar">Add to Calendar</a>
-            <a href="https://www.google.com/maps/search/?api=1&amp;query=Sonnenallee+100,+12045+Berlin" class="btn btn-outline" target="_blank" rel="noopener" data-i18n="events.directions">Get Directions</a>
+          <!-- Photos open in a popup. This hidden list is only their source: nothing is downloaded until
+               "Show photos" is clicked. Web copies live in the event's photos/ folder; see events/README.md. -->
+          <div class="event-gallery">
+            <button type="button" class="btn btn-outline event-photos-open" aria-haspopup="dialog" data-photos="photos-e1">
+              <span data-i18n="events.showPhotos">Show photos</span> <span class="photo-count">(3)</span>
+            </button>
+            <div class="event-photos" id="photos-e1" hidden>
+                <a href="events/2026-11-07-berlin-voted/photos/photo-1.jpg"><img data-src="events/2026-11-07-berlin-voted/photos/photo-1-thumb.jpg" width="640" height="360" alt="" data-i18n-alt="events.e1.photo1"></a>
+                <a href="events/2026-11-07-berlin-voted/photos/photo-2.jpg"><img data-src="events/2026-11-07-berlin-voted/photos/photo-2-thumb.jpg" width="640" height="360" alt="" data-i18n-alt="events.e1.photo2"></a>
+                <a href="events/2026-11-07-berlin-voted/photos/photo-3.jpg"><img data-src="events/2026-11-07-berlin-voted/photos/photo-3-thumb.jpg" width="640" height="360" alt="" data-i18n-alt="events.e1.photo3"></a>
+            </div>
           </div>
-        </div>
-      </article>
+        </article>
+      </div>
+
+      <!-- Shown only when no upcoming events are left -->
+      <div class="events-empty" id="events-empty" hidden>
+        <p data-i18n="events.none">No upcoming events right now — new ones will be announced here soon. Want to hear first, or have an idea for an event?</p>
+        <a href="#contact" class="btn btn-outline" data-i18n="events.noneCta">Get in Touch</a>
+      </div>
+
+      <!-- Shown only when at least one event has ended -->
+      <div class="events-past" id="events-past-wrap" hidden>
+        <h3 class="events-past-title" data-i18n="events.pastH3">Past Events</h3>
+        <div class="events-list" id="events-past"></div>
+      </div>
     </div>
   </section>
 
@@ -352,6 +408,35 @@
     </div>
   </footer>
 
+  <!-- Photo popup for event galleries: large photo, counter and a strip of thumbnails -->
+  <dialog class="photo-viewer" id="photo-viewer">
+    <figure class="pv-stage">
+      <img class="pv-photo" alt="">
+      <figcaption class="pv-caption">
+        <span class="pv-alt"></span>
+        <span class="pv-meta"><span class="pv-credit" data-i18n="events.photoCredit">Photo: © EnCompass e.V.</span><span class="pv-count"></span></span>
+      </figcaption>
+    </figure>
+    <div class="pv-thumbs"></div>
+    <button type="button" class="pv-btn pv-close" data-i18n-aria="events.photoClose" aria-label="Close">&times;</button>
+    <button type="button" class="pv-btn pv-prev" data-i18n-aria="events.photoPrev" aria-label="Previous photo">&#8249;</button>
+    <button type="button" class="pv-btn pv-next" data-i18n-aria="events.photoNext" aria-label="Next photo">&#8250;</button>
+  </dialog>
+
+  <script>
+    // Move events that have ended into "Past Events" (newest first); show a note if none are upcoming
+    (function sortEvents() {
+      const now = Date.now();
+      const upcoming = document.getElementById('events-upcoming');
+      const past = document.getElementById('events-past');
+      const ended = [...upcoming.querySelectorAll('.event-card')]
+        .filter(card => Date.parse(card.dataset.end) < now)
+        .sort((a, b) => Date.parse(b.dataset.end) - Date.parse(a.dataset.end));
+      ended.forEach(card => { card.classList.add('is-past'); past.appendChild(card); });
+      document.getElementById('events-past-wrap').hidden = ended.length === 0;
+      document.getElementById('events-empty').hidden = upcoming.querySelector('.event-card') !== null;
+    })();
+  </script>
   <script src="translations.js"></script>
   <script>
     let currentLang = 'en';
@@ -376,6 +461,14 @@
       document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
         const v = t[el.dataset.i18nPlaceholder];
         if (v !== undefined) el.placeholder = v;
+      });
+      document.querySelectorAll('[data-i18n-alt]').forEach(el => {
+        const v = t[el.dataset.i18nAlt];
+        if (v !== undefined) el.alt = v;
+      });
+      document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+        const v = t[el.dataset.i18nAria];
+        if (v !== undefined) el.setAttribute('aria-label', v);
       });
 
       document.querySelectorAll('.lang-btn').forEach(btn => {
@@ -444,6 +537,52 @@
       link.href = 'mailto:' + CONTACT_EMAIL
         + '?subject=' + encodeURIComponent(subject)
         + '&body=' + encodeURIComponent(body);
+    });
+
+    // Event photos: "Show photos" opens them in a popup. Files are only downloaded at that point.
+    const viewer = document.getElementById('photo-viewer');
+    const viewerImg = viewer.querySelector('.pv-photo');
+    const viewerThumbs = viewer.querySelector('.pv-thumbs');
+    let gallery = [], shown = 0;   // gallery: [{ full, thumb, alt }]
+
+    function showPhoto(i) {
+      shown = (i + gallery.length) % gallery.length;
+      viewerImg.src = gallery[shown].full;
+      viewerImg.alt = gallery[shown].alt;
+      viewer.querySelector('.pv-alt').textContent = gallery[shown].alt;
+      viewer.querySelector('.pv-count').textContent = (shown + 1) + ' / ' + gallery.length;
+      viewerThumbs.querySelectorAll('button').forEach((b, n) => b.setAttribute('aria-current', n === shown));
+    }
+
+    document.querySelectorAll('.event-photos-open').forEach(btn => {
+      btn.addEventListener('click', () => {
+        gallery = [...document.getElementById(btn.dataset.photos).querySelectorAll('a')].map(a => {
+          const img = a.querySelector('img');
+          return { full: a.href, thumb: img.dataset.src, alt: img.alt };
+        });
+        viewerThumbs.replaceChildren(...gallery.map((p, n) => {
+          const b = document.createElement('button');
+          b.type = 'button';
+          b.innerHTML = '<img alt="">';
+          b.querySelector('img').src = p.thumb;
+          b.setAttribute('aria-label', p.alt);
+          b.addEventListener('click', () => showPhoto(n));
+          return b;
+        }));
+        viewer.querySelector('.pv-prev').hidden = viewer.querySelector('.pv-next').hidden = gallery.length < 2;
+        showPhoto(0);
+        viewer.showModal();
+      });
+    });
+    viewer.addEventListener('close', () => viewerImg.removeAttribute('src'));
+    viewer.querySelector('.pv-close').addEventListener('click', () => viewer.close());
+    viewer.querySelector('.pv-prev').addEventListener('click', () => showPhoto(shown - 1));
+    viewer.querySelector('.pv-next').addEventListener('click', () => showPhoto(shown + 1));
+    viewer.addEventListener('click', e => { if (e.target === viewer) viewer.close(); });   // click outside the photo
+    viewer.addEventListener('keydown', e => {
+      const rtl = document.documentElement.dir === 'rtl';
+      if (e.key === 'ArrowRight') showPhoto(shown + (rtl ? -1 : 1));
+      if (e.key === 'ArrowLeft') showPhoto(shown + (rtl ? 1 : -1));
     });
   </script>
 

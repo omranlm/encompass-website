@@ -1,0 +1,9 @@
+# Windows / Google Drive folder settings
+*.ini
+
+# Original event photos (full size, with GPS/camera data) stay private on the drive.
+# Only the web copies in events/<event>/photos/ are published.
+events/*/*.jpg
+events/*/*.jpeg
+events/*/*.png
+events/*/*.heic

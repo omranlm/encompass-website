@@ -11,7 +11,9 @@ It is a single static page with no build step and no dependencies. It is availab
 | `index.html` | The whole page: markup, inline SVG logos and the small script for language switching and the mobile menu |
 | `style.css` | All styles. The colours and layout values are CSS variables in `:root` |
 | `translations.js` | The text of the page in each language (`en`, `de`, `ar`) |
-| `events/` | Calendar files (`.ics`) for the "Add to Calendar" buttons |
+| `events/` | One folder per event (`YYYY-MM-DD-short-name/`) with its documentation (`README.md`) and calendar file (`calendar.ics`). See [`events/README.md`](events/README.md) for the list of events and how to add one |
+| `favicon.svg`, `favicon-32.png`, `apple-touch-icon.png` | Browser-tab and home-screen icons: the brand's app icon (Midnight compass mark on Compass Gold) |
+| `og-image.png` | The preview image shown when the site's link is shared (1200 × 630). Made from `assets/artboards/social-preview.html` |
 | `assets/` | Brand designs: `designs.html` shows all artboards together; `artboards/` holds the editable source of each one |
 | `.github/workflows/` | GitHub Actions workflows that deploy the site to GitHub Pages |
 
@@ -30,8 +32,10 @@ The page is one long scroll. The navigation bar links to each section by its anc
    - **Media & Content**: print, digital and broadcast content about liberal values
    - **Workshops & Seminars**: educational events for practitioners, academics, students and the public
    - **Authors & Academics**: platforms, funding and networks for writers and researchers
-5. **Events** (`#events`): upcoming events, each with buttons to register, add it to a calendar and get directions. The current event is:
-   - **Berlin Voted — Now What?** (*برلين صوّتت، هلأ شو؟*): an open discussion in Arabic about the election results. Saturday 7 November 2026, 7 pm, at Casino for Social Medicine, Sonnenallee 100, 12045 Berlin. Registration: [forms.gle/igDyNW962T2jzQc28](https://forms.gle/igDyNW962T2jzQc28)
+5. **Events** (`#events`): sorts itself by date. Each event card in `index.html` has a `data-end` time; when the page loads, events that have ended move to **Past Events** (newest first), lose their Register / Calendar / Directions buttons, and show a short past-tense summary instead. If no upcoming events are left, a note invites visitors to get in touch. An event can also have photos: a **Show photos** button opens them in a popup, and they only download when clicked. Events so far:
+   - **Berlin Voted — Now What?** (*برلين صوّتت، هلأ شو؟*): an open discussion in Arabic about the election results. Saturday 7 November 2026, 7 pm, at Casino for Social Medicine, Sonnenallee 100, 12045 Berlin. Registration was via [forms.gle/igDyNW962T2jzQc28](https://forms.gle/igDyNW962T2jzQc28). Full documentation: [`events/2026-11-07-berlin-voted/`](events/2026-11-07-berlin-voted/README.md)
+
+   **To add an event:** follow the steps in [`events/README.md`](events/README.md): create the event's folder from `events/_template/`, add its card to `index.html` with a `data-end` time, and add its text in all three languages in `translations.js`.
 6. **Membership** (`#membership`): the three types of membership:
    - **Ordinary (Active) Member**: pays fees and volunteers. Full voting rights and can stand for election
    - **Honorary Member**: appointed by the General Assembly. Full voting rights
@@ -75,6 +79,7 @@ The brand's designs are kept as plain HTML artboards, so they can be edited in a
 | `artboards/visual-identity.html` | 1600 × 1200: logo, colours and fonts ("Brand Basics 1.0") |
 | `artboards/logo.html` | 1600 × 800: the logo on Midnight |
 | `artboards/google-form-header.html` | 1600 × 400: header image for the event's Google Form (same details as the A3 poster, no QR code) |
+| `artboards/social-preview.html` | 1200 × 630: link-preview image. After editing, run `python assets/export.py social-preview` and copy `assets/exports/social-preview.png` to `og-image.png` at the site root |
 | `artboards/instagram-post.html` | 1080 × 1080: "Berlin Votes" event post (Arabic, German, English) |
 | `artboards/carousel-1-event-ar.html` | 1080 × 1080: the event, in Arabic |
 | `artboards/carousel-2-about.html` | 1080 × 1080: About EnCompass |

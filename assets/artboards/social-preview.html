@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1200">
+<title>Social preview · encompass.ngo</title>
+<link rel="stylesheet" href="fonts.css">
+<style>
+  html, body { margin: 0; background: #0E1A2B; }
+  body { width: 1200px; height: 630px; overflow: hidden; }
+  /* For PDF export: one page at the artboard's size, with backgrounds */
+  @page { size: 1200px 630px; margin: 0; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+</style>
+</head>
+<body>
+<!-- Link preview image (Open Graph / Twitter): 1200 × 630. Copied to /og-image.png at the site root.
+     Some apps crop to a square or 1.91:1, so the logo and names stay in the middle. -->
+<div style="width: 1200px; height: 630px; box-sizing: border-box; position: relative; overflow: hidden; background: #0E1A2B; color: #F4F1EA; font-family: Manrope, 'Helvetica Neue', Helvetica, sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 34px;">
+
+  <!-- Faint compass ring, top right -->
+  <svg width="760" height="760" viewBox="0 0 640 640" fill="none" aria-hidden="true" style="position: absolute; top: -330px; right: -260px; opacity: 0.12;">
+    <circle cx="320" cy="320" r="300" stroke="#C9A24A" stroke-width="1.5"/>
+    <circle cx="320" cy="320" r="236" stroke="#C9A24A" stroke-width="1"/>
+    <path d="M320 20 L338 302 L320 320 L302 302 Z" stroke="#C9A24A" stroke-width="1.5"/>
+    <path d="M320 620 L338 338 L320 320 L302 338 Z" stroke="#C9A24A" stroke-width="1"/>
+    <path d="M20 320 L302 302 L320 320 L302 338 Z" stroke="#C9A24A" stroke-width="1"/>
+    <path d="M620 320 L338 302 L320 320 L338 338 Z" stroke="#C9A24A" stroke-width="1"/>
+  </svg>
+
+  <!-- Berlin skyline along the bottom -->
+  <svg width="1200" height="56" viewBox="0 0 1200 56" preserveAspectRatio="none" fill="none" aria-hidden="true" style="position: absolute; left: 0; bottom: 0; opacity: 0.5;">
+    <path d="M0 55 H150 V42 H210 V48 H280 V34 H310 V48 H380 V55 H440 V38 H452 V30 H560 V38 H572 V55 H578 V38 M476 55 V38 M502 55 V38 M528 55 V38 M572 38 H578 M578 55 H680 V44 H730 V50 H770 V55 H786 V24 M794 55 V24 M786 24 H794 M790 24 V4 M830 55 H866 V40 H920 V48 H980 V36 H1010 V48 H1200" stroke="#C9A24A" stroke-width="1.5" stroke-linejoin="round"/>
+    <circle cx="790" cy="13" r="7" stroke="#C9A24A" stroke-width="1.5"/>
+  </svg>
+
+  <!-- Primary logo -->
+  <div style="position: relative; display: flex; align-items: center; gap: 40px;">
+    <svg width="170" height="170" viewBox="0 0 160 160" fill="none" role="img" aria-label="EnCompass compass mark">
+      <circle cx="80" cy="80" r="46" stroke="#C9A24A" stroke-width="2.5"/>
+      <path d="M80 24 L88 72 L80 80 L72 72 Z" fill="#C9A24A"/>
+      <path d="M80 136 L88 88 L80 80 L72 88 Z" stroke="#C9A24A" stroke-width="2"/>
+      <path d="M24 80 L72 72 L80 80 L72 88 Z" stroke="#C9A24A" stroke-width="2"/>
+      <path d="M136 80 L88 72 L80 80 L88 88 Z" stroke="#C9A24A" stroke-width="2"/>
+      <text x="80" y="13" text-anchor="middle" font-family="Manrope, sans-serif" font-size="11" font-weight="800" fill="#C9A24A">N</text>
+      <text x="80" y="157" text-anchor="middle" font-family="Manrope, sans-serif" font-size="11" font-weight="800" fill="#AEB9CB">S</text>
+      <text x="151" y="84" text-anchor="middle" font-family="Manrope, sans-serif" font-size="11" font-weight="800" fill="#AEB9CB">E</text>
+      <text x="9" y="84" text-anchor="middle" font-family="Manrope, sans-serif" font-size="11" font-weight="800" fill="#AEB9CB">W</text>
+    </svg>
+    <div style="display: flex; flex-direction: column; gap: 14px;">
+      <div style="font-size: 104px; letter-spacing: -0.04em; line-height: 1; white-space: nowrap;"><span style="font-weight: 300;">En</span><span style="font-weight: 800;">Compass</span><span style="font-weight: 500; color: #C9A24A; font-size: 52px; letter-spacing: 0;"> e.V.</span></div>
+      <div style="font-size: 23px; font-weight: 500; letter-spacing: 0.06em; color: #AEB9CB; white-space: nowrap;">Advancing Liberal Values &amp; Personal Freedoms</div>
+    </div>
+  </div>
+
+  <!-- The same promise in Arabic and German -->
+  <div style="position: relative; display: flex; align-items: center; gap: 22px; font-size: 24px; font-weight: 500; color: #C3CCDA; white-space: nowrap;">
+    <span lang="ar" dir="rtl" style="font-family: 'IBM Plex Sans Arabic', 'Noto Sans Arabic', Tahoma, sans-serif; font-size: 27px;"><b style="color: #F4F1EA; font-weight: 700;">إنكومباس</b> · تعزيز القيم الليبرالية والحريات الشخصية</span>
+    <span style="color: #C9A24A;">◆</span>
+    <span lang="de">Für liberale Werte &amp; persönliche Freiheiten</span>
+  </div>
+
+  <div style="position: relative; font-size: 26px; font-weight: 800; letter-spacing: -0.01em; color: #C9A24A;">encompass.ngo <span style="font-weight: 500; color: #8E9BB0;">· Berlin</span></div>
+</div>
+</body>
+</html>
