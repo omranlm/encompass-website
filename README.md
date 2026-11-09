@@ -85,6 +85,7 @@ The brand's designs are kept as plain HTML artboards, so they can be edited in a
 | `artboards/carousel-2-about.html` | 1080 × 1080: About EnCompass |
 | `artboards/print-poster-a3.html` | 1123 × 1587: A3 print poster (297 × 420 mm) |
 | `artboards/print-poster-a3-fun.html` | 1123 × 1587: a playful A3 version of the event poster (speech bubbles, ballot paper, bunting) |
+| `artboards/print-poster-a3-fun-de.html` | 1123 × 1587: German copy of the playful A3 poster, laid out left to right |
 
 `artboards/fonts.css` and `artboards/fonts/` hold the brand fonts as local files: **Manrope** (variable, 300–800) and **IBM Plex Sans Arabic** (300–700). The artboards work offline.
 

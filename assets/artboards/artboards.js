@@ -10,5 +10,6 @@ window.ARTBOARDS = [
   {"file": "carousel-1-event-ar", "title": "Carousel 1 · Event (Arabic)",  "w": 1080, "h": 1080, "row": 1},
   {"file": "carousel-2-about",    "title": "Carousel 2 · About EnCompass", "w": 1080, "h": 1080, "row": 1},
   {"file": "print-poster-a3",     "title": "Print poster · A3",            "w": 1123, "h": 1587, "row": 1, "page": "297mm 420mm", "note": "297 × 420 mm"},
-  {"file": "print-poster-a3-fun", "title": "Print poster · A3 · Fun",      "w": 1123, "h": 1587, "row": 1, "page": "297mm 420mm", "note": "297 × 420 mm"}
+  {"file": "print-poster-a3-fun", "title": "Print poster · A3 · Fun",      "w": 1123, "h": 1587, "row": 1, "page": "297mm 420mm", "note": "297 × 420 mm"},
+  {"file": "print-poster-a3-fun-de", "title": "Print poster · A3 · Fun · Deutsch", "w": 1123, "h": 1587, "row": 1, "page": "297mm 420mm", "note": "297 × 420 mm"}
 ];

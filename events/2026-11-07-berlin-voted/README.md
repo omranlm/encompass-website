@@ -42,6 +42,7 @@ Edit the source in `assets/artboards/`, then run `python assets/export.py <name>
 | Carousel 1, event in Arabic (QR to calendar) | 1080 × 1080 | [`carousel-1-event-ar.html`](../../assets/artboards/carousel-1-event-ar.html) | [PNG](../../assets/exports/carousel-1-event-ar.png) · [JPG](../../assets/exports/carousel-1-event-ar.jpg) · [PDF](../../assets/exports/carousel-1-event-ar.pdf) |
 | A3 print poster (QR to calendar and to registration) | 297 × 420 mm | [`print-poster-a3.html`](../../assets/artboards/print-poster-a3.html) | [PDF](../../assets/exports/print-poster-a3.pdf) · [PNG](../../assets/exports/print-poster-a3.png) |
 | A3 print poster, fun version (QR to calendar and to registration) | 297 × 420 mm | [`print-poster-a3-fun.html`](../../assets/artboards/print-poster-a3-fun.html) | [PDF](../../assets/exports/print-poster-a3-fun.pdf) · [PNG](../../assets/exports/print-poster-a3-fun.png) |
+| A3 print poster, fun version **in German**, left to right (QR to calendar and to registration) | 297 × 420 mm | [`print-poster-a3-fun-de.html`](../../assets/artboards/print-poster-a3-fun-de.html) | [PDF](../../assets/exports/print-poster-a3-fun-de.pdf) · [PNG](../../assets/exports/print-poster-a3-fun-de.png) |
 | Google Form header (no QR) | 1600 × 400 | [`google-form-header.html`](../../assets/artboards/google-form-header.html) | [PNG](../../assets/exports/google-form-header.png) · [PNG @2x](../../assets/exports/google-form-header@2x.png) |
 
 ## Registration form text
